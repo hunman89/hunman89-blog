@@ -1,14 +1,22 @@
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import * as React from "react";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 
-const AboutPage = () => {
+const AboutPage = ({ data }) => {
   return (
     <Layout pageTitle="About Me">
-      <p>
-        Hi there! I'm the proud creator of this site, which I built with Gatsby.
-      </p>
+      <MDXRenderer>{data.mdx.body}</MDXRenderer>
     </Layout>
   );
 };
+
+export const query = graphql`
+  query {
+    mdx(frontmatter: { title: { eq: "About" } }) {
+      body
+    }
+  }
+`;
 
 export default AboutPage;
