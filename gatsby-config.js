@@ -1,18 +1,30 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://hunman89blogmaster.gatsbyjs.io/",
     title: "hunman-blog",
+    author: `hunman89`,
+    description: `hunman-blog`,
+    social: [
+      {
+        name: `Twitter`,
+        url: `https://github.com/hunman89`,
+      },
+      {
+        name: `GitHub`,
+        url: `https://github.com/hunman89`,
+      },
+    ],
   },
   plugins: [
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-theme-blog`,
       options: {
-        name: `blog`,
-        path: `${__dirname}/blog`,
+        // basePath defaults to `/`
+        basePath: `/blog`,
       },
     },
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
