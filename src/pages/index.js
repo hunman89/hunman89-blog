@@ -5,8 +5,8 @@ import { StaticImage } from "gatsby-plugin-image";
 const IndexPage = () => {
   return (
     <Layout pageTitle="Home Page">
-      <p>안녕하세요 개발자 정성훈입니다.</p>
-      <StaticImage alt="me" src="../images/me.jpg" />
+      <p>I'm making this by following the Gatsby Tutorial.</p>
+      <StaticImage alt="gatsby icon" src="../images/icon.png" />
     </Layout>
   );
 };
