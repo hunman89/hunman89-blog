@@ -20,7 +20,15 @@ module.exports = {
         path: `${__dirname}/about`,
       },
     },
-    "gatsby-plugin-mdx",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [ `gatsby-remark-autolink-headers` ],
+    plugins: [ `gatsby-remark-autolink-headers` ],
+      },
+    },
     "gatsby-transformer-sharp",
+    
   ],
 };
