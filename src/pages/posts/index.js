@@ -8,7 +8,7 @@ const BlogPage = ({ data }) => {
       {data.allMdx.nodes.map((node) => (
         <article key={node.id}>
           <h2>
-            <Link to={`/blog/${node.slug}`}>{node.frontmatter.title}</Link>
+            <Link to={`/posts/${node.slug}`}>{node.frontmatter.title}</Link>
           </h2>
           <p>Posted: {node.frontmatter.date}</p>
         </article>
@@ -20,7 +20,7 @@ const BlogPage = ({ data }) => {
 export const query = graphql`
   query {
     allMdx(
-      filter: { fileAbsolutePath: { regex: "/post/" } }
+      filter: { fileAbsolutePath: { regex: "/posts/" } }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       nodes {
