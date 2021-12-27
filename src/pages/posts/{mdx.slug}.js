@@ -1,11 +1,11 @@
 import { graphql, Link } from "gatsby";
 import * as React from "react";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import Layout from "../../components/layout";
+import WrapMDXElements from "../../components/wrapMDXElements";
 
 const ContentsList = ({ items }) => {
   return (
-    <ul style={{ listStyle: "none", paddingLeft: "20px" }}>
+    <ul className="pl-3">
       {items.map((item) => {
         return <ContentsItem key={`${item.url}-item`} item={item} />;
       })}
@@ -14,7 +14,7 @@ const ContentsList = ({ items }) => {
 };
 const ContentsItem = ({ item }) => (
   <li>
-    <Link style={{ textDecorationLine: "none", color: "gray" }} to={item.url}>
+    <Link className=" text-gray-500" to={item.url}>
       {item.title}
     </Link>
     {item.items && item.items.length && (
@@ -26,8 +26,8 @@ const ContentsItem = ({ item }) => (
 const BlogPost = ({ data }) => {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
-      <p className="pb-5 border-b-2 mb-5">{data.mdx.frontmatter.date}</p>
-      <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      <p className="p-5 border-b-2 mb-5">{data.mdx.frontmatter.date}</p>
+      <WrapMDXElements element={data.mdx.body}></WrapMDXElements>
       {typeof data.mdx.tableOfContents.items === "undefined" ? null : (
         <div
           style={{
