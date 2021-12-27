@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  container,
-  heading,
-  navLinks,
-  navLinkItem,
-  navLinkText,
-  siteTitle,
-} from "./layout.module.css";
+
 import { Link, useStaticQuery, graphql } from "gatsby";
 
 const Layout = ({ pageTitle, children }) => {
@@ -21,34 +14,30 @@ const Layout = ({ pageTitle, children }) => {
   `);
 
   return (
-    <div className={container}>
+    <div>
       <title>
         {pageTitle} | {data.site.siteMetadata.title}
       </title>
-      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/posts" className={navLinkText}>
-              Posts
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
-      </main>
+      <div className=" border-b-2 m-auto px-10 py-5 flex justify-between w-10/12">
+        <h1 className=" text-2xl font-semibold align-middle p-4">
+          {pageTitle}
+        </h1>
+        <nav>
+          <ul className="flex">
+            <li className="p-4">
+              <Link to="/" className=" hover:font-medium">
+                Home
+              </Link>
+            </li>
+            <li className="p-4">
+              <Link to="/posts" className="hover:font-medium">
+                Posts
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <main className="pt-10 m-auto w-2/3">{children}</main>
     </div>
   );
 };

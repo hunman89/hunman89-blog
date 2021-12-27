@@ -4,6 +4,7 @@ module.exports = {
     title: "hunman-blog",
   },
   plugins: [
+    "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     {
@@ -14,21 +15,13 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `about`,
-        path: `${__dirname}/about`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins: [ `gatsby-remark-autolink-headers` ],
-    plugins: [ `gatsby-remark-autolink-headers` ],
+        gatsbyRemarkPlugins: [`gatsby-remark-autolink-headers`],
+        plugins: [`gatsby-remark-autolink-headers`],
       },
     },
     "gatsby-transformer-sharp",
-    
   ],
 };
