@@ -26,7 +26,7 @@ const ContentsItem = ({ item }) => (
 const BlogPost = ({ data }) => {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
-      <p>{data.mdx.frontmatter.date}</p>
+      <p className="pb-5 border-b-2 mb-5">{data.mdx.frontmatter.date}</p>
       <MDXRenderer>{data.mdx.body}</MDXRenderer>
       {typeof data.mdx.tableOfContents.items === "undefined" ? null : (
         <div
@@ -39,7 +39,6 @@ const BlogPost = ({ data }) => {
           }}
         >
           <h2>Table of Contents</h2>
-
           <ContentsList items={data.mdx.tableOfContents.items} />
         </div>
       )}

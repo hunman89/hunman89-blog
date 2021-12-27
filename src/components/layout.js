@@ -37,7 +37,9 @@ const Layout = ({ pageTitle, children }) => {
           </ul>
         </nav>
       </div>
-      <main className="pt-10 m-auto w-2/3">{children}</main>
+      <div className="w-10/12 m-auto">
+        <main className="p-10 w-2/3">{children}</main>
+      </div>
     </div>
   );
 };
