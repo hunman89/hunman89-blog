@@ -1,8 +1,13 @@
 import * as React from "react";
 
 import { Link, useStaticQuery, graphql } from "gatsby";
+import mail from "../icons/mail.svg";
+import github from "../icons/github.svg";
 
 const Layout = ({ pageTitle, children }) => {
+  const onMailClick = () => {
+    alert("메일 주소는 hunman89@gmail.com 입니다");
+  };
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -14,7 +19,7 @@ const Layout = ({ pageTitle, children }) => {
   `);
 
   return (
-    <div>
+    <div className="static">
       <title>
         {pageTitle} | {data.site.siteMetadata.title}
       </title>
@@ -39,6 +44,16 @@ const Layout = ({ pageTitle, children }) => {
       </div>
       <div className="w-10/12 m-auto">
         <main className="p-10 w-2/3">{children}</main>
+      </div>
+      <div className=" fixed bottom-5 right-20 flex">
+        <img
+          className=" w-10 h-10 mr-6 hover:cursor-pointer"
+          src={mail}
+          onClick={onMailClick}
+        />
+        <Link className="w-10 h-10" to="https://github.com/hunman89">
+          <img src={github} />
+        </Link>
       </div>
     </div>
   );
