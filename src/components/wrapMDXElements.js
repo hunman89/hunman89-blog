@@ -27,6 +27,7 @@ const MyBlockquote = (props) => (
   <blockquote {...props} className=" bg-gray-300 p-1 italic" />
 );
 const MyUl = (props) => <p {...props} className=" p-2" />;
+const MyA = (props) => <a {...props} className=" text-blue-400 p-2" />;
 
 const components = {
   h1: MyH1,
@@ -36,6 +37,7 @@ const components = {
   p: MyParagraph,
   blockquote: MyBlockquote,
   ul: MyUl,
+  a: MyA,
 };
 
 const WrapMDXElements = ({ element }) => (
