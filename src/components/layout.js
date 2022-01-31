@@ -47,12 +47,13 @@ const Layout = ({ pageTitle, children }) => {
       </div>
       <div className=" fixed bottom-5 right-20 flex">
         <img
+          alt="mail address"
           className=" w-10 h-10 mr-6 hover:cursor-pointer"
           src={mail}
           onClick={onMailClick}
         />
         <Link className="w-10 h-10" to="https://github.com/hunman89">
-          <img src={github} />
+          <img alt="github link" src={github} />
         </Link>
       </div>
     </div>

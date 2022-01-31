@@ -3,6 +3,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
   purge: ["./src/**/*.{js,jsx,ts,tsx}"],
 };

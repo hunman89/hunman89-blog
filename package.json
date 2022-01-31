@@ -29,6 +29,7 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.1",
     "autoprefixer": "^10.4.0",
     "gatsby-plugin-postcss": "^5.4.0",
     "postcss": "^8.4.5",

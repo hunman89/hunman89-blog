@@ -1,7 +1,7 @@
 import { graphql, Link } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import * as React from "react";
 import Layout from "../../components/layout";
-import WrapMDXElements from "../../components/wrapMDXElements";
 
 const ContentsList = ({ items }) => {
   return (
@@ -27,7 +27,9 @@ const BlogPost = ({ data }) => {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <p className="p-5 border-b-2 mb-5">{data.mdx.frontmatter.date}</p>
-      <WrapMDXElements element={data.mdx.body}></WrapMDXElements>
+      <article class="prose">
+        <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      </article>
       {typeof data.mdx.tableOfContents.items === "undefined" ? null : (
         <div
           style={{
@@ -47,8 +49,8 @@ const BlogPost = ({ data }) => {
 };
 
 export const query = graphql`
-  query ($slug: String) {
-    mdx(slug: { eq: $slug }) {
+  query ($id: String) {
+    mdx(id: { eq: $id }) {
       body
       frontmatter {
         title

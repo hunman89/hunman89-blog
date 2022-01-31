@@ -1,6 +1,5 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
     title: "hunman-blog",
   },
   plugins: [
@@ -11,7 +10,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: `posts`,
-        path: `${__dirname}/posts`,
+        path: `${__dirname}/contents/posts`,
       },
     },
     {
