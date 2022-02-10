@@ -58,7 +58,7 @@ const Layout = ({ pageTitle, children }) => {
         </nav>
       </div>
       <div className="w-full xl:max-w-5xl m-auto">
-        <main className="p-10 w-2/3">{children}</main>
+        <main className="p-10">{children}</main>
       </div>
       <div className=" fixed bottom-5 right-5 sm:bottom-20 sm:right-20 xl:right-1/4 flex space-x-5">
         <button
