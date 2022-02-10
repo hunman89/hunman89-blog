@@ -14,7 +14,7 @@ const ContentsList = ({ items }) => {
 };
 const ContentsItem = ({ item }) => (
   <li>
-    <Link className=" text-gray-500" to={item.url}>
+    <Link className=" text-gray-500 hover:text-gray-700" to={item.url}>
       {item.title}
     </Link>
     {item.items && item.items.length && (
@@ -31,15 +31,7 @@ const BlogPost = ({ data }) => {
         <MDXRenderer>{data.mdx.body}</MDXRenderer>
       </article>
       {typeof data.mdx.tableOfContents.items === "undefined" ? null : (
-        <div
-          style={{
-            position: "fixed",
-            right: "10vw",
-            top: "10vw",
-            height: "50%",
-            overflow: "hidden",
-          }}
-        >
+        <div className=" invisible xl:visible fixed right-1/4 top-1/4 h-60 overflow-hidden">
           <h2>Table of Contents</h2>
           <ContentsList items={data.mdx.tableOfContents.items} />
         </div>
