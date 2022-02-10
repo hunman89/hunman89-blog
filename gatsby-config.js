@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "hunman-blog",
+    title: "Hunman's Blog",
   },
   plugins: [
     "gatsby-plugin-postcss",

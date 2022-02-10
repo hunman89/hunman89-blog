@@ -4,5 +4,4 @@ module.exports = {
     extend: {},
   },
   plugins: [require("@tailwindcss/typography")],
-  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
 };
