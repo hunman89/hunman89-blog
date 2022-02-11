@@ -18,12 +18,12 @@ const Layout = ({ pageTitle, children }) => {
   `);
 
   return (
-    <div className="static">
+    <div>
       <title>
         {pageTitle} | {data.site.siteMetadata.title}
       </title>
       <div className=" border-b-2 border-gray-500 m-auto sm:py-10 p-5 sm:px-20 flex justify-between items-center w-full xl:max-w-5xl">
-        <h1 className="text-xl sm:text-4xl font-bold text-gray-700">
+        <h1 className="text-xl sm:text-4xl font-bold text-gray-700 dark:text-white">
           {pageTitle === "Main" ? data.site.siteMetadata.title : pageTitle}
         </h1>
         <nav>
@@ -32,10 +32,10 @@ const Layout = ({ pageTitle, children }) => {
               <Link
                 to="/"
                 className={cls(
-                  "font-medium sm:text-xl",
+                  "font-medium sm:text-xl ",
                   pageTitle === "Main"
-                    ? "text-gray-700"
-                    : "text-gray-500 group-hover:text-gray-700"
+                    ? "text-gray-700 dark:text-white"
+                    : "text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-white"
                 )}
               >
                 Home
@@ -47,8 +47,8 @@ const Layout = ({ pageTitle, children }) => {
                 className={cls(
                   "font-medium sm:text-xl",
                   pageTitle === "Blog Posts"
-                    ? "text-gray-700"
-                    : "text-gray-500 group-hover:text-gray-700"
+                    ? "text-gray-700 dark:text-white"
+                    : "text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-white"
                 )}
               >
                 Posts
@@ -62,7 +62,7 @@ const Layout = ({ pageTitle, children }) => {
       </div>
       <div className=" fixed bottom-5 right-5 sm:bottom-20 sm:right-20 xl:right-1/4 flex space-x-5">
         <button
-          className="text-gray-500 hover:text-gray-700 items-center aspect-square transition-colors"
+          className="text-gray-500 hover:text-gray-700 dark:hover:text-white items-center aspect-square transition-colors"
           onClick={onMailClick}
         >
           <svg
@@ -81,7 +81,7 @@ const Layout = ({ pageTitle, children }) => {
           </svg>
         </button>
         <a
-          className="text-gray-500 hover:text-gray-700 items-center aspect-square transition-colors"
+          className="text-gray-500 hover:text-gray-700 dark:hover:text-white items-center aspect-square transition-colors"
           href="https://github.com/hunman89"
         >
           <svg
