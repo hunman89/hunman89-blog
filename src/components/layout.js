@@ -3,7 +3,12 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import { cls } from "../libs/utils";
 
 const Layout = ({ pageTitle, children }) => {
-  const [theme, setTheme] = React.useState(localStorage.getItem("color-theme"));
+  const [theme, setTheme] = React.useState("light");
+  React.useEffect(() => {
+    if (localStorage.getItem("color-theme")) {
+      setTheme(localStorage.getItem("color-theme"));
+    }
+  }, []);
   const onMailClick = () => {
     alert("메일 주소는 hunman89@gmail.com 입니다");
   };
