@@ -25,22 +25,20 @@ const ContentsItem = ({ item }) => (
 
 const BlogPost = ({ data }) => {
   return (
-    <div className=" dark:bg-slate-900 min-h-screen ">
-      <Layout pageTitle={data.mdx.frontmatter.title}>
-        <p className="p-5 border-b-2 mb-5 dark:text-white">
-          {data.mdx.frontmatter.date}
-        </p>
-        <article class="prose dark:prose-invert">
-          <MDXRenderer>{data.mdx.body}</MDXRenderer>
-        </article>
-        {typeof data.mdx.tableOfContents.items === "undefined" ? null : (
-          <div className=" invisible xl:visible fixed right-1/4 top-1/4 h-60 overflow-hidden">
-            <h2 className="dark:text-white">Table of Contents</h2>
-            <ContentsList items={data.mdx.tableOfContents.items} />
-          </div>
-        )}
-      </Layout>
-    </div>
+    <Layout pageTitle={data.mdx.frontmatter.title}>
+      <p className="p-5 border-b-2 mb-5 dark:text-white">
+        {data.mdx.frontmatter.date}
+      </p>
+      <article class="prose dark:prose-invert">
+        <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      </article>
+      {typeof data.mdx.tableOfContents.items === "undefined" ? null : (
+        <div className=" invisible xl:visible fixed right-1/4 top-1/4 h-60 overflow-hidden">
+          <h2 className="dark:text-white">Table of Contents</h2>
+          <ContentsList items={data.mdx.tableOfContents.items} />
+        </div>
+      )}
+    </Layout>
   );
 };
 
