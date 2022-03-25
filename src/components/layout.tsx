@@ -2,11 +2,25 @@ import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import { cls } from "../libs/utils";
 
-const Layout = ({ pageTitle, children }) => {
+interface LayoutProps {
+  pageTitle: string;
+  children: React.ReactNode;
+}
+
+interface ILayoutData {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+}
+
+const Layout = ({ pageTitle, children }: LayoutProps) => {
   const [theme, setTheme] = React.useState("light");
   React.useEffect(() => {
-    if (localStorage.getItem("color-theme")) {
-      setTheme(localStorage.getItem("color-theme"));
+    const storageTheme = localStorage.getItem("color-theme");
+    if (storageTheme) {
+      setTheme(storageTheme);
     }
   }, []);
   const onMailClick = () => {
@@ -26,7 +40,7 @@ const Layout = ({ pageTitle, children }) => {
       localStorage.setItem("color-theme", "dark");
     }
   };
-  const data = useStaticQuery(graphql`
+  const data: ILayoutData = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
@@ -87,7 +101,7 @@ const Layout = ({ pageTitle, children }) => {
           >
             {theme === "dark" ? (
               <svg
-                class="w-10 h-10"
+                className="w-10 h-10"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

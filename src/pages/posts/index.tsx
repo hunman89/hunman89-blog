@@ -2,7 +2,24 @@ import * as React from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../../components/layout";
 
-const BlogPage = ({ data }) => {
+interface BlogPageProps {
+  data: {
+    allMdx: {
+      nodes: Node[];
+    };
+  };
+}
+
+interface Node {
+  frontmatter: {
+    date: string;
+    title: string;
+  };
+  id: string;
+  slug: string;
+}
+
+const BlogPage = ({ data }: BlogPageProps) => {
   return (
     <Layout pageTitle="Blog Posts">
       {data.allMdx.nodes.map((node) => (
