@@ -19,7 +19,7 @@ interface IListItem {
 
 const ContentsList = ({ items }: ContentsListProps) => {
   return (
-    <ul className="pl-3">
+    <ul className="pl-3 py-1">
       {items.map((item: IListItem) => {
         return <ContentsItem key={`${item.url}-item`} item={item} />;
       })}
@@ -53,15 +53,15 @@ interface BlogPostProps {
 const BlogPost = ({ data }: BlogPostProps) => {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
-      <p className="p-5 border-b-2 mb-5 dark:text-white">
+      <p className="py-2 px-3 sm:p-5 border-b-2 mb-5 dark:text-white">
         {data.mdx.frontmatter.date}
       </p>
-      <article className="prose dark:prose-invert">
+      <article className="p-3 prose prose-sm max-w-none sm:prose-lg dark:prose-invert">
         <MDXRenderer>{data.mdx.body}</MDXRenderer>
       </article>
       {typeof data.mdx.tableOfContents.items === "undefined" ? null : (
-        <div className=" invisible xl:visible fixed right-1/4 top-1/4 h-60 overflow-hidden">
-          <h2 className="dark:text-white">Table of Contents</h2>
+        <div className=" invisible xl:visible fixed xl:right-1/4 xl:top-64 h-60 overflow-hidden">
+          <h2 className="dark:text-white pb-3">Table of Contents</h2>
           <ContentsList items={data.mdx.tableOfContents.items} />
         </div>
       )}

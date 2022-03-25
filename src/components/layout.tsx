@@ -92,7 +92,7 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
           </nav>
         </div>
         <div className="w-full xl:max-w-5xl m-auto">
-          <main className="p-10">{children}</main>
+          <main className="sm:px-10">{children}</main>
         </div>
         <div className=" fixed bottom-5 right-5 sm:bottom-20 sm:right-20 xl:right-1/4 flex space-x-5">
           <button
