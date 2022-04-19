@@ -1,43 +1,59 @@
 import * as React from "react";
-import { StaticImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
-import { Link, PageProps } from "gatsby";
+import { graphql, Link, PageProps } from "gatsby";
 
-const IndexPage = () => {
-  return (
-    <Layout pageTitle="Main">
-      <div className=" items-center justify-center sm:space-y-20">
-        <div className="sm:flex items-center justify-center sm:space-x-10">
-          <div className=" flex items-center justify-center">
-            <StaticImage
-              className=" w-60 aspect-square shadow-md rounded-full"
-              src="../images/hunman.jpg"
-              alt="hunman image"
-            />
-          </div>
-          <div className=" sm:space-y-5 pt-5 sm:pt-0 text-xl text-gray-700 w-full dark:text-white">
-            <div>안녕하세요👏</div>
-            <div>
-              <span className="font-bold">새로운 것</span>에 도전🤩 하기를
-              두려워하지 않고
-            </div>
-            <div>즐겁게 코딩💻 하는</div>
-            <div>
-              개발자 <span className="hover:text-purple-700">정성훈</span>{" "}
-              입니다.
-            </div>
-          </div>
-        </div>
-        <div className="sm:flex items-center justify-center sm:space-x-10">
-          <Link to="/about">
-            <div className="flex items-center justify-center sm:space-y-5 pt-5 sm:pt-0 text-xl text-gray-700 w-full dark:text-white">
-              <div>About Me ▶</div>
-            </div>
-          </Link>
-        </div>
-      </div>
-    </Layout>
-  );
+interface BlogPageProps {
+    data: {
+        allMdx: {
+            nodes: Node[];
+        };
+    };
+}
+
+interface Node {
+    frontmatter: {
+        date: string;
+        title: string;
+    };
+    id: string;
+    slug: string;
+}
+
+const IndexPage = ({ data }: BlogPageProps) => {
+    return (
+        <Layout pageTitle="Hunman Blog">
+            {data.allMdx.nodes.map((node) => (
+                <Link to={`/posts/${node.slug}`}>
+                    <article key={node.id} className=" border-2 p-4 m-4 group">
+                        <h2 className="text-xl font-medium text-gray-700 group-hover:text-gray-800 dark:group-hover:text-white dark:text-gray-400">
+                            {node.frontmatter.title}
+                        </h2>
+                        <p className=" dark:text-slate-300">
+                            Posted: {node.frontmatter.date}
+                        </p>
+                    </article>
+                </Link>
+            ))}
+        </Layout>
+    );
 };
+
+export const query = graphql`
+    query {
+        allMdx(
+            filter: { fileAbsolutePath: { regex: "/posts/" } }
+            sort: { fields: frontmatter___date, order: DESC }
+        ) {
+            nodes {
+                frontmatter {
+                    date(formatString: "MMMM D, YYYY")
+                    title
+                }
+                id
+                slug
+            }
+        }
+    }
+`;
 
 export default IndexPage;
